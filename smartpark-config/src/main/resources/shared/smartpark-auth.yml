@@ -1,0 +1,24 @@
+server:
+  port: 8001
+spring:
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
+  datasource:
+    # 使用默认的数据库连接池 hikariCP
+    platform: mysql
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://127.0.0.1:3306/smartpark_cloud_uac?useUnicode=true&characterEncoding=utf-8&serverTimezone=UTC
+    username: root
+    password: root
+mybatis:
+  mapperLocations: mapper/*.xml
+  typeAliasesPackage: com.czht.smartpark.auth.dmo
+  configuration:
+    lazyLoadingEnabled: true
+    aggressiveLazyLoading: false
+mapper:
+  mappers:
+    - tk.mybatis.mapper.common.Mapper
+  not-empty: true

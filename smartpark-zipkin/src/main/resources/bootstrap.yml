@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: smartpark-zipkin
+  cloud:
+    config:
+      uri: http://192.168.10.58:8888
+      fail-fast: true
+  main:
+    allow-bean-definition-overriding: true
+logging:
+  level:
+    root: debug

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<script language="javascript" for="livingBody" event="DetectFinished(error, image)">
+			onDetectFinished(error, image);
+		</script>
+	</head>
+	<body>
+		<div>
+			<object id="livingBody" classid="clsid:A1795C27-9EB4-4D63-B90A-438FF642E47E" width="480" height="360"></object>
+			<img id="portrait" src=""/>
+		</div>
+		<p></p>
+		<div>
+			<input type="button" value="´ò¿ªÉãÏñÍ·" onclick="openDevice()">
+			<input type="button" value="¹Ø±ÕÉãÏñÍ·" onclick="closeDevice()">
+			<input type="button" value="¿ªÊ¼¼ì²â" onclick="startDetect()">
+			<input type="button" value="Í£Ö¹¼ì²â" onclick="stopDetect()">
+		</div>
+
+	
+	<script language="javascript" type="text/javascript">
+		
+		var portrait = document.getElementById('portrait');
+		
+		function openDevice() {
+		    var error = livingBody.OpenDevice();
+		    if (error != 0)
+            	alert("´ò¿ªÉè±¸Ê§°Ü£¬´íÎóÂë£º" + error);
+		}
+		
+		function closeDevice() {
+			portrait.src = "";
+		    var error = livingBody.CloseDevice();
+		    if (error != 0)
+            	alert("¹Ø±ÕÉè±¸Ê§°Ü£¬´íÎóÂë£º" + error);
+		}
+		
+		function startDetect() {
+			portrait.src = "";
+		    var error = livingBody.StartDetect(10000);
+		    if (error != 0)
+            	alert("¿ªÊ¼¼ì²âÊ§°Ü£¬´íÎóÂë£º" + error);
+		}
+		
+		function stopDetect() {
+		    var error = livingBody.StopDetect();
+		    if (error != 0)
+            	alert("Í£Ö¹¼ì²âÊ§°Ü£¬´íÎóÂë£º" + error);
+		}
+		
+		function onDetectFinished(error, image) {
+			if (error != 0) {
+            	alert("¼ì²âÊ§°Ü£¬´íÎóÂë£º" + error);
+        	} else {
+            	portrait.src = "data:image/gif;base64," + image;
+        	}
+		}
+		
+		
+	</script>
+	
+		</body>
+
+</html>

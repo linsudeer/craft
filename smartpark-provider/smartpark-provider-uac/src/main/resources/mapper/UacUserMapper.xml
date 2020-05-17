@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czht.smartpark.provider.uac.mapper.UacUserMapper">
+  <resultMap id="BaseResultMap" type="com.czht.smartpark.provider.uac.dmo.UacUser">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="account_non_expired" jdbcType="BIT" property="accountNonExpired" />
+    <result column="account_non_locked" jdbcType="BIT" property="accountNonLocked" />
+    <result column="credentials_non_expired" jdbcType="BIT" property="credentialsNonExpired" />
+    <result column="enabled" jdbcType="BIT" property="enabled" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="user_type" jdbcType="INTEGER" property="userType" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, username, account, nickname, password,user_type account_non_expired, account_non_locked,
+    credentials_non_expired, enabled, seq, modify_time, create_time
+  </sql>
+
+  <select id="getByAccount" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"></include> from tb_uac_user where account=#{account}
+  </select>
+
+  <update id="disableUser">
+    update tb_uac_user set enabled=false where id=#{userId}
+  </update>
+
+  <update id="enableUser">
+    update tb_uac_user set enabled=true where id=#{userId}
+  </update>
+</mapper>

@@ -1,0 +1,32 @@
+server:
+  port: 8888
+spring:
+  application:
+    name: smartpark-config
+  cloud:
+    config:
+      server:
+        native:
+          search-locations: classpath:/shared
+      discovery:
+        enabled: true
+        service-id: ${spring.application.name}
+  profiles:
+    active: native
+eureka:
+  instance:
+    prefer-ip-address: true
+    hostname: ${spring.application.name}
+    instance-id: ${spring.application.name}:${eureka.instance.hostname}:${server.port}
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.10.58:8000/eureka/
+management:
+  endpoint:
+    health:
+      show-details: always
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+

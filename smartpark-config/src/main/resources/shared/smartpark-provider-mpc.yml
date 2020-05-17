@@ -1,0 +1,10 @@
+server:
+  port: 8003
+  main:
+    allow-bean-definition-overriding: true
+eureka:
+  instance:
+    hostname: ${spring.application.name}
+
+logging:
+  level.root: debug

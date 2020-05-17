@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.czht.smartpark.auth.mapper.RoleMapper">
+  <resultMap id="BaseResultMap" type="com.czht.smartpark.auth.dmo.Role">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="role_key" jdbcType="VARCHAR" property="roleKey" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="seq" jdbcType="INTEGER" property="seq" />
+    <result column="modify_time" jdbcType="TIMESTAMP" property="modifyTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, `role_key`, `role_name`, description, seq, modify_time, create_time
+  </sql>
+
+  <select id="getRolesByUserId" resultMap="BaseResultMap">
+    select r.id, r.`role_key`, r.`role_name`, r.description, r.seq, r.modify_time, r.create_time from tb_uac_role r left join tb_uac_user_role ur on r.id=ur.role_id where ur.user_id=#{userId}
+  </select>
+</mapper>

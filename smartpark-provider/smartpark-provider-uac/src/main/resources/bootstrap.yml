@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: smartpark-provider-uac
+  cloud:
+    config:
+      uri: http://192.168.10.58:8888
+      fail-fast: true
