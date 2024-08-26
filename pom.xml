@@ -21,7 +21,7 @@
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <tomcat.version>8.5.53</tomcat.version>
         <java.version>1.8</java.version>
-        <springfox.version>2.8.0</springfox.version>
+        <springfox.version>2.10.0</springfox.version>
         <rocketmq.version>4.1.0-incubating</rocketmq.version>
 
     </properties>
